@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+
+  confr:
+    image: confr:latest
+    build:
+      context: .
+      dockerfile: src/Presentation/Confr.WebUI/Dockerfile
+    depends_on:
+      - data.sql
+
+  data.sql:
+    image: microsoft/mssql-server-linux:2017-latest

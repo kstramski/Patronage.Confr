@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+
+  confr.application.tests:
+    image: confr-application-tests:latest
+    build:
+      context: .
+      dockerfile: tests/Confr.Application.Tests/Dockerfile

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--<Import Project="..\Northwind.CodeAnalysis.targets" />-->
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>Confr.Domain</AssemblyName>
+    <RootNamespace>Confr.Domain</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\artifacts\bin\$(Configuration)</OutputPath>
+    <IntermediateOutputPath>..\..\..\artifacts\obj\$(Configuration)</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\artifacts\bin\$(Configuration)</OutputPath>
+    <IntermediateOutputPath>..\..\..\artifacts\obj\$(Configuration)</IntermediateOutputPath>
+  </PropertyGroup>
+
+</Project>
