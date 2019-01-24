@@ -14,19 +14,15 @@ namespace Confr.Application.Infrastructure.AutoMapper.Configurations
         {
             // Room => RoomCalendarViewModel
             configuration.CreateMap<Room, RoomCalendarViewModel>()
-                .ForMember(rc => rc.Id, opt => opt.MapFrom(r => r.Id))
                 .ForMember(rc => rc.Calendar, opt => opt.MapFrom(r => r.Calendar.Select(c => c.Date)));
 
             //Room => RoomModel
-            configuration.CreateMap<Room, RoomModel>()
-                .ForMember(rDto => rDto.Id, opt => opt.MapFrom(c => c.Id))
-                .ForMember(rDto => rDto.Name, opt => opt.MapFrom(c => c.Name));
+            configuration.CreateMap<Room, RoomModel>();
 
 
             // UpdateRoomCommand => Room
             configuration.CreateMap<UpdateRoomCommand, Room>()
-                .ForMember(r => r.Id, opt => opt.MapFrom(urc => urc.Id))
-                .ForMember(r => r.Name, opt => opt.MapFrom(urc => urc.Name))
+                .ForMember(r => r.Id, opt => opt.Ignore())
                 .ForMember(r => r.Calendar, opt => opt.Ignore())
                 .AfterMap((urc, r) =>
                 {
