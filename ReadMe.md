@@ -51,7 +51,11 @@ Follow these steps to run project tests using Docker containers:
      ```
      docker-compose -f docker-compose.tests.yml up
      ```
-
+  2. (Optional) After making changes in the project tests run commands:
+	 ```
+     docker-compose -f docker-compose.tests.yml build
+     docker-compose -f docker-compose.tests.yml up
+     ```
   
 ## Technologies
 * .NET Core 2.2
