@@ -118,7 +118,7 @@ namespace Confr.Application.Tests.Rooms.Commands
 
         private async Task<RoomCalendarViewModel> GetRoomReservations(int id)
         {
-            var queryHandler = new GetRoomCalendarQueryHandler(_context);
+            var queryHandler = new GetRoomCalendarQueryHandler(_context, _mapper);
 
             return await queryHandler.Handle(new GetRoomCalendarQuery { Id = id }, CancellationToken.None);
         }

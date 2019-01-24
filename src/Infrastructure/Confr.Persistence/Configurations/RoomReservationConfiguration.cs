@@ -8,8 +8,8 @@ namespace Confr.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<RoomReservation> builder)
         {
-            builder.HasKey(e => e.ReservationId);
-            builder.Property(e => e.ReservationId).HasColumnName("ReservationID");
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id).HasColumnName("ID");
 
             builder.Property(e => e.RoomId).HasColumnName("RoomID");
 

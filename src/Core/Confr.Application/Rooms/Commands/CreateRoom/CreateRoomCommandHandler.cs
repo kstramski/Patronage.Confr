@@ -31,8 +31,8 @@ namespace Confr.Application.Rooms.Commands.CreateRoom
 
             entity = new Room
             {
-                RoomId = request.Id,
-                RoomName = request.Name
+                Id = request.Id,
+                Name = request.Name
             };
 
             _context.Rooms.Add(entity);

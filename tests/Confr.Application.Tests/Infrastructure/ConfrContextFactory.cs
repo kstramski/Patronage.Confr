@@ -18,17 +18,17 @@ namespace Confr.Application.Tests.Infrastructure
             context.Database.EnsureCreated();
 
             context.Rooms.AddRange(new[] {
-                new Room { RoomId = 5, RoomName = "Room 5" },
-                new Room { RoomId = 7, RoomName = "Room 7" },
-                new Room { RoomId = 12, RoomName = "Room 12" },
-                new Room { RoomId = 14, RoomName = "Room 14" },
+                new Room { Id = 5, Name = "Room 5" },
+                new Room { Id = 7, Name = "Room 7" },
+                new Room { Id = 12, Name = "Room 12" },
+                new Room { Id = 14, Name = "Room 14" },
             });
 
             context.RoomReservations.AddRange(new[] {
-                new RoomReservation { RoomId = 5, ReservationDate =  new DateTime(2019, 01, 20)},
-                new RoomReservation { RoomId = 5, ReservationDate = new DateTime(2019, 01, 22) },
-                new RoomReservation { RoomId = 5, ReservationDate = new DateTime(2019, 01, 27) },
-                new RoomReservation { RoomId = 14, ReservationDate = new DateTime(2019, 01, 24) }
+                new RoomReservation { RoomId = 5, Date =  new DateTime(2019, 01, 20)},
+                new RoomReservation { RoomId = 5, Date = new DateTime(2019, 01, 22) },
+                new RoomReservation { RoomId = 5, Date = new DateTime(2019, 01, 27) },
+                new RoomReservation { RoomId = 14, Date = new DateTime(2019, 01, 24) }
             });
 
             context.SaveChanges();

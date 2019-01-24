@@ -8,11 +8,11 @@ namespace Confr.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Room> builder)
         {
-            builder.Property(e => e.RoomId)
-                .HasColumnName("RoomID")
+            builder.Property(e => e.Id)
+                .HasColumnName("ID")
                 .ValueGeneratedNever();
 
-            builder.Property(e => e.RoomName)
+            builder.Property(e => e.Name)
                 .HasMaxLength(25)
                 .IsRequired();
 

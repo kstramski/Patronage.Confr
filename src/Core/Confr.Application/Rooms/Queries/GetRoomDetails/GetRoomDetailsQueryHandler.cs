@@ -27,8 +27,8 @@ namespace Confr.Application.Rooms.Queries.GetRoomDetails
 
             return new RoomDetailsViewModel
             {
-                Id = entity.RoomId,
-                Name = entity.RoomName
+                Id = entity.Id,
+                Name = entity.Name
             };
         }
     }

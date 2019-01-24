@@ -26,7 +26,7 @@ namespace Confr.Application.Rooms.Queries.GetRoomCalendar
         {
             var roomEntity = await _context.Rooms
                 .Include(r => r.Calendar)
-                .SingleOrDefaultAsync(r => r.RoomId == request.Id);
+                .SingleOrDefaultAsync(r => r.Id == request.Id);
 
             if (roomEntity == null)
             {

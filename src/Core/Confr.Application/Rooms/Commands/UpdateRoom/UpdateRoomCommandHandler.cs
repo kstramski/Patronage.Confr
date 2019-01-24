@@ -28,7 +28,7 @@ namespace Confr.Application.Rooms.Commands.UpdateRoom
 
         public async Task<Unit> Handle(UpdateRoomCommand request, CancellationToken cancellationToken)
         {
-            var roomEntity = await _context.Rooms.Include(r => r.Calendar).SingleOrDefaultAsync(r => r.RoomId == request.Id);
+            var roomEntity = await _context.Rooms.Include(r => r.Calendar).SingleOrDefaultAsync(r => r.Id == request.Id);
 
             if (roomEntity == null)
             {

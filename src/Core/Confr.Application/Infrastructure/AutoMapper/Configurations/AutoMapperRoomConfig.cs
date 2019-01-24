@@ -14,19 +14,19 @@ namespace Confr.Application.Infrastructure.AutoMapper.Configurations
         {
             // Room => RoomCalendarViewModel
             configuration.CreateMap<Room, RoomCalendarViewModel>()
-                .ForMember(rc => rc.Id, opt => opt.MapFrom(r => r.RoomId))
-                .ForMember(rc => rc.Calendar, opt => opt.MapFrom(r => r.Calendar.Select(c => c.ReservationDate)));
+                .ForMember(rc => rc.Id, opt => opt.MapFrom(r => r.Id))
+                .ForMember(rc => rc.Calendar, opt => opt.MapFrom(r => r.Calendar.Select(c => c.Date)));
 
             //Room => RoomModel
             configuration.CreateMap<Room, RoomModel>()
-                .ForMember(rDto => rDto.Id, opt => opt.MapFrom(c => c.RoomId))
-                .ForMember(rDto => rDto.Name, opt => opt.MapFrom(c => c.RoomName));
+                .ForMember(rDto => rDto.Id, opt => opt.MapFrom(c => c.Id))
+                .ForMember(rDto => rDto.Name, opt => opt.MapFrom(c => c.Name));
 
 
             // UpdateRoomCommand => Room
             configuration.CreateMap<UpdateRoomCommand, Room>()
-                .ForMember(r => r.RoomId, opt => opt.MapFrom(urc => urc.Id))
-                .ForMember(r => r.RoomName, opt => opt.MapFrom(urc => urc.Name))
+                .ForMember(r => r.Id, opt => opt.MapFrom(urc => urc.Id))
+                .ForMember(r => r.Name, opt => opt.MapFrom(urc => urc.Name))
                 .ForMember(r => r.Calendar, opt => opt.Ignore())
                 .AfterMap((urc, r) =>
                 {
@@ -37,7 +37,7 @@ namespace Confr.Application.Infrastructure.AutoMapper.Configurations
 
                     var removedReservations = r.Calendar
                         .Where(c => !uniqueReservationsListFromCommand
-                            .Contains(c.ReservationDate))
+                            .Contains(c.Date))
                         .ToList();
 
                     foreach (var reservation in removedReservations)
@@ -47,11 +47,11 @@ namespace Confr.Application.Infrastructure.AutoMapper.Configurations
 
                     var addReservation = uniqueReservationsListFromCommand
                         .Where(date => r.Calendar
-                            .All(c => c.ReservationDate.Date != date.Date))
+                            .All(c => c.Date.Date != date.Date))
                         .Select(date => new RoomReservation
                         {
-                            RoomId = r.RoomId,
-                            ReservationDate = date.Date
+                            RoomId = r.Id,
+                            Date = date.Date
                         })
                         .ToList();
 

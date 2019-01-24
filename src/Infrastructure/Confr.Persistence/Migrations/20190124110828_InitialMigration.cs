@@ -12,31 +12,31 @@ namespace Confr.Persistence.Migrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    RoomID = table.Column<int>(nullable: false),
-                    RoomName = table.Column<string>(maxLength: 25, nullable: false)
+                    ID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rooms", x => x.RoomID);
+                    table.PrimaryKey("PK_Rooms", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "RoomReservations",
                 columns: table => new
                 {
-                    ReservationID = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoomID = table.Column<int>(nullable: false),
-                    ReservationDate = table.Column<DateTime>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomReservations", x => x.ReservationID);
+                    table.PrimaryKey("PK_RoomReservations", x => x.ID);
                     table.ForeignKey(
                         name: "FK_RoomReservations_Rooms_RoomID",
                         column: x => x.RoomID,
                         principalTable: "Rooms",
-                        principalColumn: "RoomID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 

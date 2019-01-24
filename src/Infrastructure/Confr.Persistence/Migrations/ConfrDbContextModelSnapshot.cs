@@ -21,31 +21,31 @@ namespace Confr.Persistence.Migrations
 
             modelBuilder.Entity("Confr.Domain.Entities.Room", b =>
                 {
-                    b.Property<int>("RoomId")
-                        .HasColumnName("RoomID");
+                    b.Property<int>("Id")
+                        .HasColumnName("ID");
 
-                    b.Property<string>("RoomName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(25);
 
-                    b.HasKey("RoomId");
+                    b.HasKey("Id");
 
                     b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("Confr.Domain.Entities.RoomReservation", b =>
                 {
-                    b.Property<int>("ReservationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ReservationID")
+                        .HasColumnName("ID")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ReservationDate");
+                    b.Property<DateTime>("Date");
 
                     b.Property<int>("RoomId")
                         .HasColumnName("RoomID");
 
-                    b.HasKey("ReservationId");
+                    b.HasKey("Id");
 
                     b.HasIndex("RoomId");
 
