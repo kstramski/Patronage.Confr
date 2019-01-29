@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -34,7 +35,9 @@ namespace Confr.Application.Rooms.Commands.UpdateRoom
             {
                 throw new NotFoundException(nameof(Room), request.Id);
             }
-            
+
+            request.Calendar = request.Calendar.Distinct().ToList();
+
             _mapper.Map<UpdateRoomCommand, Room>(request, roomEntity);
 
             

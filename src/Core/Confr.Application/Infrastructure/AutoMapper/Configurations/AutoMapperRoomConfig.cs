@@ -26,13 +26,8 @@ namespace Confr.Application.Infrastructure.AutoMapper.Configurations
                 .ForMember(r => r.Calendar, opt => opt.Ignore())
                 .AfterMap((urc, r) =>
                 {
-                    var uniqueReservationsListFromCommand = urc.Calendar
-                        .Select(c => c.Date)
-                        .Distinct()
-                        .ToList();
-
                     var removedReservations = r.Calendar
-                        .Where(c => !uniqueReservationsListFromCommand
+                        .Where(c => !urc.Calendar
                             .Contains(c.Date))
                         .ToList();
 
@@ -41,7 +36,7 @@ namespace Confr.Application.Infrastructure.AutoMapper.Configurations
                         r.Calendar.Remove(reservation);
                     }
 
-                    var addReservation = uniqueReservationsListFromCommand
+                    var addReservation = urc.Calendar
                         .Where(date => r.Calendar
                             .All(c => c.Date.Date != date.Date))
                         .Select(date => new RoomReservation
